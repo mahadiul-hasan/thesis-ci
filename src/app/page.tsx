@@ -43,10 +43,10 @@ export default function Home() {
                 <em>as a test suite.</em>
               </h1>
               <p className="lede" style={{ marginTop: 26 }}>
-                Fourteen statements that a number can settle. Each one is computed
-                from a public source, hashed, and re-runnable by anyone with the
-                repository. A thesis you cannot lose is not a thesis — it is a
-                press release.
+                <strong>Fourteen statements that a number can settle.</strong> Each one
+                is computed from a public source, <strong>hashed</strong>, and
+                re-runnable by anyone with the repository. A thesis you cannot lose is
+                not a thesis — it is a press release.
               </p>
               <div className="hero-actions">
                 <a href="#claims" className="btn btn-primary">
@@ -81,9 +81,10 @@ export default function Home() {
               <p className="flow-caption">
                 NEAR settles roughly <strong>{formatMetric(settled, "usd")}</strong> of
                 cross-chain volume a year and keeps{" "}
-                <strong>{formatMetric(captured, "usd")}</strong> of it. The entire bull
-                case is a bet that this ratio changes. Nothing else in this document
-                matters as much.
+                <strong>{formatMetric(captured, "usd")}</strong> of it —{" "}
+                <span className="hl-warn">{formatMetric(takeRate, "bps")}</span>. The
+                entire bull case is a bet that this ratio changes. Nothing else in this
+                document matters as much.
               </p>
             </div>
           </div>
@@ -175,7 +176,7 @@ export default function Home() {
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))",
+              gridTemplateColumns: "repeat(auto-fit, minmax(min(340px, 100%), 1fr))",
               gap: 18,
               marginTop: 26,
             }}
@@ -242,7 +243,7 @@ export default function Home() {
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+              gridTemplateColumns: "repeat(auto-fit, minmax(min(280px, 100%), 1fr))",
               gap: 18,
               marginTop: 26,
             }}

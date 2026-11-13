@@ -1,12 +1,38 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const LINKS = [
-  { href: "/", label: "Claims" },
-  { href: "/model", label: "Model" },
-  { href: "/reproduce", label: "Reproduce" },
+  { href: "/", label: "Claims", note: "14 falsifiable statements" },
+  { href: "/model", label: "Model", note: "price the take rate" },
+  { href: "/reproduce", label: "Reproduce", note: "sources, hashes, run log" },
 ];
 
 export function Nav({ active }: { active?: string }) {
+  const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+  const current = active ?? pathname;
+
+  // Close on navigation, on Escape, and lock the page behind the panel.
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
   return (
     <header className="nav">
       <div className="shell nav-inner">
@@ -23,7 +49,7 @@ export function Nav({ active }: { active?: string }) {
               key={l.href}
               href={l.href}
               className="nav-link"
-              data-active={active === l.href}
+              data-active={current === l.href}
             >
               {l.label}
             </Link>
@@ -38,6 +64,47 @@ export function Nav({ active }: { active?: string }) {
         >
           Source ↗
         </a>
+
+        <button
+          type="button"
+          className="nav-toggle"
+          data-open={open}
+          aria-expanded={open}
+          aria-controls="mobile-nav"
+          aria-label={open ? "Close menu" : "Open menu"}
+          onClick={() => setOpen((v) => !v)}
+        >
+          <span aria-hidden />
+          <span aria-hidden />
+          <span aria-hidden />
+        </button>
+      </div>
+
+      <div id="mobile-nav" className="mobile-panel" data-open={open} hidden={!open}>
+        <div className="shell mobile-panel-inner">
+          {LINKS.map((l) => (
+            <Link
+              key={l.href}
+              href={l.href}
+              className="mobile-link"
+              data-active={current === l.href}
+              onClick={() => setOpen(false)}
+            >
+              <span>{l.label}</span>
+              <span className="arrow mono">{l.note} →</span>
+            </Link>
+          ))}
+          <a
+            className="mobile-link"
+            href="https://github.com/"
+            target="_blank"
+            rel="noreferrer noopener"
+            onClick={() => setOpen(false)}
+          >
+            <span>Source</span>
+            <span className="arrow mono">GitHub ↗</span>
+          </a>
+        </div>
       </div>
     </header>
   );

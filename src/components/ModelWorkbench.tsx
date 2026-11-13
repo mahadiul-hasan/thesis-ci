@@ -173,7 +173,8 @@ export function ModelWorkbench({
             rate of{" "}
             <strong style={{ color: "var(--accent)" }}>{required.toFixed(2)} bps</strong>{" "}
             — {required > measuredTakeRateBps ? "higher" : "lower"} than the{" "}
-            {measuredTakeRateBps.toFixed(2)} bps NEAR actually captures.{" "}
+            <span className="hl-warn">{measuredTakeRateBps.toFixed(2)} bps</span> NEAR
+            actually captures.{" "}
             {required > measuredTakeRateBps
               ? "That is the gap the bull case has to close."
               : "The market is pricing less capture than the network already delivers."}

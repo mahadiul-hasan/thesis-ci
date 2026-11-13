@@ -11,6 +11,12 @@ export const metadata: Metadata = {
       "Fourteen falsifiable claims about NEAR. Every number hashed and re-runnable.",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "thesis-ci — the NEAR thesis, as a test suite",
+    description:
+      "$32.93B settled, $1.15M captured, 0.35 bps take rate. 4 of 14 claims hold.",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
