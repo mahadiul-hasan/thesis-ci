@@ -68,7 +68,7 @@ Go to **Model**. Drag **take rate** from `0.35 bps` to `5.00 bps`.
 npm run reproduce
 ```
 
-**Expect:** all ten sources refetched with fresh fingerprints, then a field-by-field diff of every metric that moved, ending in `HASH MATCH` or `HASH DIFFERS` with the reason.
+**Expect:** `check 1 integrity OK`, then all ten sources refetched with fresh fingerprints, then a field-by-field diff of every metric that moved, ending in `HASH MATCH` or a named `DRIFT`.
 
 ### 6. Read it as data
 
@@ -177,6 +177,13 @@ npm run reproduce    # refetch, recompute, diff against the committed snapshot
 ```
 
 A snapshot is a photograph, not a live feed. Re-running later is *expected* to show drift — the point is that the drift is visible, attributed to a field, and quantified. If you re-run against unchanged inputs you get the same hash; if you do not, the diff tells you exactly which source moved.
+
+`npm run reproduce` runs two independent checks:
+
+- **Check 1 — integrity, offline.** It rehashes the committed snapshot from its own contents and must reproduce the hash exactly. No network, no clock. This is what proves the file was not edited after collection.
+- **Check 2 — live drift.** It refetches every source, recomputes every metric, and names each field that moved and by how much.
+
+Check 1 always passes on an untouched repository. Check 2 usually drifts, because prices move — and that drift is the honest part.
 
 The hash covers:
 

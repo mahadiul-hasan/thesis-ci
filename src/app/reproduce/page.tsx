@@ -67,16 +67,20 @@ export default function ReproducePage() {
             <div className="step">
               <div className="step-n">02</div>
               <div className="step-t">
-                <b>Recompute.</b> Run <span className="mono">npm run reproduce</span>.
-                It refetches all {snapshot.sources.length} sources, recomputes every
-                metric, and diffs the result against the snapshot on this page.
+                <b>Check the file, offline.</b> Run{" "}
+                <span className="mono">npm run reproduce</span>. First it rehashes the
+                committed snapshot from its own contents — no network, no clock — and
+                must reproduce the hash on this page exactly. This catches an edited
+                file.
               </div>
             </div>
             <div className="step">
               <div className="step-n">03</div>
               <div className="step-t">
-                <b>Compare.</b> If the hash matches, nothing was cherry-picked. If it
-                does not, the diff names every field that moved and by how much.
+                <b>Then refetch.</b> It fetches all {snapshot.sources.length} sources
+                again and diffs every metric against the snapshot. Drift is expected
+                against live data; the diff names each field that moved and by how
+                much.
               </div>
             </div>
           </div>

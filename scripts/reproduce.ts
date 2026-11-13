@@ -47,6 +47,30 @@ async function main() {
   console.log(`  committed  ${previous.generatedAt}`);
   console.log(`  hash       ${previous.hash}\n`);
 
+  // Check 1 — offline integrity. Recompute the hash from the committed file
+  // itself. No network, no clock, no drift: this must always pass, and if it
+  // does not, the snapshot was edited after it was written.
+  const localHash = sha256(
+    canonicalJson({
+      chain: previous.chain,
+      metrics: previous.metrics,
+      sources: previous.sources,
+    }),
+  );
+  const integrityOk = localHash === previous.hash;
+  console.log(
+    `  ${C.bold("check 1")} ${C.dim("offline integrity")}  ` +
+      (integrityOk ? C.green("OK") : C.red("FAILED")),
+  );
+  console.log(
+    `          ${C.dim("sha256 of the committed {chain, metrics, sources}")}`,
+  );
+  if (!integrityOk) {
+    console.log(`          ${C.red(`claimed ${previous.hash}`)}`);
+    console.log(`          ${C.red(`got     ${localHash}`)}`);
+  }
+  console.log("");
+
   const manifest = sourceManifest();
   const fetched: FetchedSource[] = [];
   for (const entry of manifest) {
@@ -116,12 +140,27 @@ async function main() {
   }
 
   console.log(`\n  ${C.bold("verdict")}\n`);
+  console.log(
+    `  ${C.dim("check 1  integrity")}  ` +
+      (integrityOk ? C.green("OK") : C.red("FAILED")) +
+      `  ${C.dim("the committed file was not edited after collection")}`,
+  );
   if (hash === previous.hash) {
-    console.log(`  ${C.green("HASH MATCH")} — inputs identical to the committed snapshot.`);
+    console.log(
+      `  ${C.dim("check 2  live")}       ${C.green("HASH MATCH")}` +
+        `  ${C.dim("inputs identical to the committed snapshot")}`,
+    );
   } else {
-    console.log(`  ${C.yellow("HASH DIFFERS")} — ${moved} metric(s) moved since the snapshot.`);
-    console.log(`  ${C.dim("This is expected when re-running against live data.")}`);
-    console.log(`  ${C.dim("It is not expected if you re-ran the same second with the same inputs.")}`);
+    console.log(
+      `  ${C.dim("check 2  live")}       ${C.yellow("DRIFT")}` +
+        `  ${C.dim(`${moved} metric(s) moved since the snapshot`)}`,
+    );
+    console.log(
+      `           ${C.dim("expected when re-running against live data;")}`,
+    );
+    console.log(
+      `           ${C.dim("the diff above names every field that moved")}`,
+    );
   }
 
   console.log(`\n  committed  ${previous.hash}`);
