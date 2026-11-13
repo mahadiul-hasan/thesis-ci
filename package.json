@@ -1,0 +1,27 @@
+{
+  "name": "thesis-ci",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A test suite for an investment thesis. Falsifiable claims about NEAR, computed from raw on-chain data, reproducible by anyone.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "collect": "tsx scripts/collect.ts",
+    "reproduce": "tsx scripts/reproduce.ts",
+    "attest": "tsx scripts/attest.ts"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "next": "^16.4.6",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  }
+}

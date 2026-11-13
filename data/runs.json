@@ -1,0 +1,20 @@
+[
+  {
+    "id": "snapshot-2026-11-13",
+    "generatedAt": "2026-11-13T17:35:20.323Z",
+    "hash": "d6508b6c1af974f5c74864bb4d7d0d9150e1988f3565957a56560ac8b9afff75",
+    "blockHeight": 224395522,
+    "takeRateBps": 0.35072336206592925,
+    "pfMultiple": 3989.154451304521,
+    "chainFees1y": 1154830
+  },
+  {
+    "id": "snapshot-2026-11-13",
+    "generatedAt": "2026-11-13T17:39:29.551Z",
+    "hash": "d4c94531a944530c8042f95d7f0c44b24163392e32705b5c83a650e0fb263fc5",
+    "blockHeight": 224395941,
+    "takeRateBps": 0.35072336206592925,
+    "pfMultiple": 3998.3710753963787,
+    "chainFees1y": 1154830
+  }
+]
