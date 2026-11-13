@@ -8,9 +8,7 @@ Built for **NEAR HACKATHON** — tracks: **Investment Thesis**, **Open Innovatio
 
 **Repo:** [github.com/mahadiul-hasan/thesis-ci](https://github.com/mahadiul-hasan/thesis-ci)
 
-| The scorecard | A claim that fails |
-|---|---|
-| ![Home page: $32.93B settled, $1.15M captured, 0.35 bps take rate, 4 of 14 claims holding](docs/home.png) | ![Claim C-02: measured 0.35 bps against a required 5.00 bps, with the source payload hash](docs/claim.png) |
+![thesis-ci home page — $32.93B settled, $1.15M captured, 0.35 bps take rate, 4 of 14 claims holding](docs/home.png)
 
 ---
 
@@ -59,6 +57,8 @@ Open <http://localhost:3000>.
 Click **C-02 · NEAR captures its own flow**.
 
 **Expect:** measured `0.35 bps` against a required `> 5.00 bps`, a **FAIL** pill, `-93% headroom`, the exact formula `chain fees ÷ Intents volume × 10,000`, both raw inputs, and the SHA-256 fingerprint of the DefiLlama payload the number came from.
+
+![claim C-02 — 0.35 bps measured against 5.00 bps required, with the source payload hash and the re-run command](docs/claim.png)
 
 ### 4. Move the model
 
