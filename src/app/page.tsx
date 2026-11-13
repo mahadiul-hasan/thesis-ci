@@ -43,7 +43,7 @@ export default function Home() {
                 <em>as a test suite.</em>
               </h1>
               <p className="lede" style={{ marginTop: 26 }}>
-                Thirteen statements that a number can settle. Each one is computed
+                Fourteen statements that a number can settle. Each one is computed
                 from a public source, hashed, and re-runnable by anyone with the
                 repository. A thesis you cannot lose is not a thesis — it is a
                 press release.
@@ -136,7 +136,7 @@ export default function Home() {
               <div className="eyebrow" style={{ marginBottom: 12 }}>
                 01 / Claim suite
               </div>
-              <h2 className="section-title">Thirteen statements that can lose</h2>
+              <h2 className="section-title">Fourteen statements that can lose</h2>
             </div>
             <p className="section-note">
               Thresholds were written down before the numbers were read. Click any

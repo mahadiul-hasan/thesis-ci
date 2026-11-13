@@ -1,6 +1,9 @@
 import { getSnapshot } from "@/lib/snapshot";
 import { evaluateAll, summarise } from "@/lib/claims";
 
+// The snapshot only changes at build time, so this endpoint is prerendered.
+export const dynamic = "force-static";
+
 /**
  * GET /api/claims
  *

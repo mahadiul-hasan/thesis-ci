@@ -1,5 +1,8 @@
 import { getSnapshot } from "@/lib/snapshot";
 
+// The snapshot only changes at build time, so this endpoint is prerendered.
+export const dynamic = "force-static";
+
 /**
  * GET /api/snapshot
  *
