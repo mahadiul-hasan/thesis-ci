@@ -37,7 +37,7 @@ function pct(a: number | null, b: number | null): number | null {
 async function main() {
   const path = join(DATA, "latest.json");
   if (!existsSync(path)) {
-    console.error("No committed snapshot. Run `npm run collect` first.");
+    console.error("No committed snapshot. Run `npx tsx scripts/collect.ts` first.");
     process.exit(1);
   }
   const previous = JSON.parse(readFileSync(path, "utf8")) as Snapshot;

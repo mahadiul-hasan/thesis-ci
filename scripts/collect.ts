@@ -1,7 +1,10 @@
 /**
  * Collect a snapshot.
  *
- *   npm run collect
+ *   npx tsx scripts/collect.ts
+ *
+ * Deliberately not an npm script: this rewrites data/latest.json, and the
+ * committed snapshot is the artefact the claims are judged against.
  *
  * Fetches every source in the manifest, fingerprints the raw bytes, computes the
  * metrics, and writes an immutable snapshot to data/snapshots/ plus a pointer at

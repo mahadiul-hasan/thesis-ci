@@ -12,7 +12,6 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "collect": "tsx scripts/collect.ts",
     "reproduce": "tsx scripts/reproduce.ts",
     "attest": "tsx scripts/attest.ts"
   },

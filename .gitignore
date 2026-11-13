@@ -6,3 +6,7 @@ out
 *.tsbuildinfo
 next-env.d.ts
 .vercel
+
+# Local-only working notes, not part of the submission.
+DEMO.md
+AGENTS.md

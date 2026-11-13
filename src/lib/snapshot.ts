@@ -8,7 +8,7 @@ export function getSnapshot(): Snapshot {
   const path = join(DATA, "latest.json");
   if (!existsSync(path)) {
     throw new Error(
-      "No snapshot found. Run `npm run collect` to create data/latest.json before building.",
+      "No snapshot found. Run `npx tsx scripts/collect.ts` to create data/latest.json before building.",
     );
   }
   return JSON.parse(readFileSync(path, "utf8")) as Snapshot;

@@ -8,6 +8,10 @@ Built for **NEAR HACKATHON** — tracks: **Investment Thesis**, **Open Innovatio
 
 **Repo:** [github.com/mahadiul-hasan/thesis-ci](https://github.com/mahadiul-hasan/thesis-ci)
 
+| The scorecard | A claim that fails |
+|---|---|
+| ![Home page: $32.93B settled, $1.15M captured, 0.35 bps take rate, 4 of 14 claims holding](docs/home.png) | ![Claim C-02: measured 0.35 bps against a required 5.00 bps, with the source payload hash](docs/claim.png) |
+
 ---
 
 ## The finding, in one box
@@ -159,7 +163,7 @@ public APIs ──► fetch + sha256 each payload ──► computeMetrics() ─
                               Next.js static pages  +  /api/snapshot  +  /api/claims
 ```
 
-- `scripts/collect.ts` — fetches all sources, fingerprints them, computes metrics, writes `data/snapshots/<date>.json` and `data/latest.json`.
+- `scripts/collect.ts` — fetches all sources, fingerprints them, computes metrics, writes `data/snapshots/<date>.json` and `data/latest.json`. It is not wired to an npm script on purpose: the committed snapshot is the artefact under test, and one stray command should not be able to rewrite it.
 - `src/lib/metrics.ts` — every formula, with its inputs recorded alongside the result.
 - `src/lib/claims.ts` — the pre-registered thresholds and the pass/fail evaluator.
 - `src/lib/model.ts` — the valuation function.
@@ -172,9 +176,10 @@ No database, no cron, no server state. The snapshot is a file in git.
 ## Reproducibility
 
 ```bash
-npm run collect      # fetch, fingerprint, compute, write a new snapshot
-npm run reproduce    # refetch, recompute, diff against the committed snapshot
+npm run reproduce    # rehash the committed snapshot, then refetch and diff it
 ```
+
+To build a *new* snapshot, run the collector directly — `npx tsx scripts/collect.ts`. It is deliberately not an npm script, because it overwrites the committed data and the hash under test.
 
 A snapshot is a photograph, not a live feed. Re-running later is *expected* to show drift — the point is that the drift is visible, attributed to a field, and quantified. If you re-run against unchanged inputs you get the same hash; if you do not, the diff tells you exactly which source moved.
 
@@ -244,8 +249,8 @@ data/
   runs.json                append-only run log
   attestations.json        on-chain attestations, if any
 scripts/
-  collect.ts               fetch → fingerprint → compute → write
-  reproduce.ts             refetch → recompute → diff
+  collect.ts               fetch → fingerprint → compute → write (run directly)
+  reproduce.ts             rehash offline, then refetch → recompute → diff
   attest.ts                publish the snapshot hash to NEAR
 src/
   app/                     pages: claims, claim detail, model, reproduce, API
