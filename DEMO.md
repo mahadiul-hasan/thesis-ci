@@ -101,7 +101,7 @@ Optional tags for reach: `@NearLegion` `@NearBuilders`.
 ## 3. Publish the repo
 
 ```bash
-git remote add origin https://github.com/<you>/thesis-ci.git
+git remote add origin https://github.com/mahadiul-hasan/thesis-ci.git
 git branch -M main
 git push -u origin main
 ```
@@ -113,7 +113,7 @@ Then deploy for the hosted-demo bonus (optional but worth it):
 
 1. Go to <https://vercel.com/new>, import the repo.
 2. Framework: Next.js. No environment variables needed.
-3. Deploy. Add the URL to the top of the README.
+3. Deploy. Then add a `**Live:** <your-url>` line directly under the `**Repo:**` line at the top of `README.md`, and set the Vercel URL as the repo's homepage on GitHub.
 
 Keep the deployment up until **25 Nov**.
 
@@ -131,7 +131,7 @@ Form: <https://nearhackathon.com/#apply>
 | Team size | `1` (or your real size) |
 | Tracks | `Investment Thesis` + `Open Innovation` |
 | NEAR wallet | *your mainnet account, e.g. `you.near`* |
-| Repository link | `https://github.com/<you>/thesis-ci` |
+| Repository link | `https://github.com/mahadiul-hasan/thesis-ci` |
 | Demo post link | the X post URL |
 | Consent | tick |
 

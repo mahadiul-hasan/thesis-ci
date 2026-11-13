@@ -6,6 +6,8 @@ Fourteen falsifiable claims about NEAR. Each one is computed from a public data 
 
 Built for **NEAR HACKATHON** — tracks: **Investment Thesis**, **Open Innovation**.
 
+**Repo:** [github.com/mahadiul-hasan/thesis-ci](https://github.com/mahadiul-hasan/thesis-ci)
+
 ---
 
 ## The finding, in one box

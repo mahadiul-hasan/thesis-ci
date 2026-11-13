@@ -58,7 +58,7 @@ export function Nav({ active }: { active?: string }) {
 
         <a
           className="nav-cta"
-          href="https://github.com/"
+          href="https://github.com/mahadiul-hasan/thesis-ci"
           target="_blank"
           rel="noreferrer noopener"
         >
@@ -96,7 +96,7 @@ export function Nav({ active }: { active?: string }) {
           ))}
           <a
             className="mobile-link"
-            href="https://github.com/"
+            href="https://github.com/mahadiul-hasan/thesis-ci"
             target="_blank"
             rel="noreferrer noopener"
             onClick={() => setOpen(false)}

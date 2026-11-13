@@ -3,7 +3,7 @@ import type { SourceRef } from "./types";
 
 export type FetchedSource = SourceRef & { json: unknown };
 
-const UA = "thesis-ci/1.0 (+https://github.com/; reproducible research)";
+const UA = "thesis-ci/1.0 (+https://github.com/mahadiul-hasan/thesis-ci; reproducible research)";
 
 async function once(url: string, init?: RequestInit): Promise<Response> {
   return fetch(url, {
