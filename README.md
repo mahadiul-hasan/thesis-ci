@@ -6,7 +6,9 @@ Fourteen falsifiable claims about NEAR. Each one is computed from a public data 
 
 Built for **NEAR HACKATHON** — tracks: **Investment Thesis**, **Open Innovation**.
 
-**Repo:** [github.com/mahadiul-hasan/thesis-ci](https://github.com/mahadiul-hasan/thesis-ci)
+**Repo:** [github.com/mahadiul-hasan/thesis-ci](https://github.com/mahadiul-hasan/thesis-ci) · **Live:** [thesis-ci.vercel.app](https://thesis-ci.vercel.app)
+
+There is also an 80-second self-driving walkthrough at [`/demo`](https://thesis-ci.vercel.app/demo) — it scrolls and navigates the real site in the order of the argument, if you would rather watch than click.
 
 ![thesis-ci home page — $32.93B settled, $1.15M captured, 0.35 bps take rate, 4 of 14 claims holding](docs/home.png)
 
