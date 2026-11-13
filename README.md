@@ -117,6 +117,8 @@ Snapshot `snapshot-2026-11-13`, block `224,395,941`.
 
 The pattern is the argument: **flow and capital are arriving; capture is not.** Intents settles at scale, TVL trend is up 56%, the validator set is not concentrated, and the protocol still ships. Meanwhile the network captures a third of a basis point, fees fell 32% month over month, and the valuation is four thousand times revenue.
 
+The site closes with a section that states the bull case fairly — what NEAR is actually winning, and the four numbers that would flip the verdict. A scorecard that only lists failures is a hit piece, not an instrument.
+
 ### Two methodological choices worth defending
 
 - **90-day averages, not point-to-point.** NEAR TVL went from $54.6M to $162.2M over 90 days — but it was $243.1M a month ago. Point-to-point changes on that series are cherry-pickable in either direction. Claims D-04 and D-05 compare two adjacent 90-day means instead.

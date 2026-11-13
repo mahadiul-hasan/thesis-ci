@@ -12,6 +12,11 @@ export default function Home() {
   const s = summarise(claims);
   const m = snapshot.metrics;
 
+  const passes = claims.filter((c) => c.status === "pass");
+  const captureGaps = claims.filter(
+    (c) => c.group === "capture" && c.status === "fail",
+  );
+
   const settled = m.intents_volume_1y?.value ?? null;
   const captured = m.chain_fees_1y?.value ?? null;
   const takeRate = m.take_rate_bps?.value ?? null;
@@ -229,12 +234,101 @@ export default function Home() {
           </div>
         </section>
 
+        {/* --------------------------------------------------------- other side */}
+        <section className="section shell">
+          <div className="section-head">
+            <div>
+              <div className="eyebrow" style={{ marginBottom: 12 }}>
+                03 / The other side
+              </div>
+              <h2 className="section-title">The bull case, stated fairly</h2>
+            </div>
+            <p className="section-note">
+              A scorecard that only lists failures is a hit piece. Here is what NEAR is
+              genuinely winning, and the exact numbers that would flip the verdict.
+            </p>
+          </div>
+
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(min(320px, 100%), 1fr))",
+              gap: 18,
+              marginTop: 26,
+            }}
+          >
+            <div className="card card-pad">
+              <div
+                className="eyebrow"
+                style={{ marginBottom: 16, color: "var(--pass)" }}
+              >
+                NEAR is winning this
+              </div>
+              <div className="stack-14">
+                {passes.map((c) => (
+                  <div key={c.id}>
+                    <div className="mono" style={{ fontSize: 13, color: "var(--ink)" }}>
+                      {formatMetric(c.value, m[c.metricId]?.unit ?? "count")}
+                    </div>
+                    <div
+                      style={{
+                        fontSize: 12.5,
+                        color: "var(--ink-mute)",
+                        marginTop: 3,
+                        lineHeight: 1.45,
+                      }}
+                    >
+                      {c.claim}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="card card-pad">
+              <div
+                className="eyebrow"
+                style={{ marginBottom: 16, color: "var(--accent)" }}
+              >
+                This would flip the verdict
+              </div>
+              <div className="stack-14">
+                {captureGaps.map((c) => (
+                  <div key={c.id}>
+                    <div
+                      className="mono"
+                      style={{ fontSize: 13, color: "var(--accent)" }}
+                    >
+                      {c.thresholdLabel}
+                    </div>
+                    <div
+                      style={{
+                        fontSize: 12.5,
+                        color: "var(--ink-mute)",
+                        marginTop: 3,
+                        lineHeight: 1.45,
+                      }}
+                    >
+                      {c.title}
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <p className="prose" style={{ marginTop: 18, fontSize: 13 }}>
+                Clear those four and NEAR stops being an <em>option</em> on a business
+                and becomes one. The claims are dated, so the market does not have to
+                guess when that verdict changes.
+              </p>
+            </div>
+          </div>
+        </section>
+
         {/* ------------------------------------------------------------ method */}
         <section className="section shell">
           <div className="section-head">
             <div>
               <div className="eyebrow" style={{ marginBottom: 12 }}>
-                03 / Method
+                04 / Method
               </div>
               <h2 className="section-title">Why you should trust a number here</h2>
             </div>
